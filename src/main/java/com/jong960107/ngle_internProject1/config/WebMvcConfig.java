@@ -3,6 +3,7 @@ package com.jong960107.ngle_internProject1.config;
 import com.jong960107.ngle_internProject1.beans.UserBeans;
 import com.jong960107.ngle_internProject1.interceptor.CheckLoginInterceptor;
 import com.jong960107.ngle_internProject1.interceptor.TopMenuInterceptor;
+import com.jong960107.ngle_internProject1.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistration;
@@ -18,17 +19,22 @@ public class WebMvcConfig implements WebMvcConfigurer {
     private UserBeans loginUserBeansResource;
 
     @Autowired
-    TopMenuInterceptor topMenuInterceptor;
+    private UserService userService;
 
 
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
 
+
+
+        TopMenuInterceptor topMenuInterceptor = new TopMenuInterceptor(userService,loginUserBeansResource);
+
         CheckLoginInterceptor checkLoginInterceptor = new CheckLoginInterceptor(loginUserBeansResource);
         InterceptorRegistration reg1 = registry.addInterceptor(checkLoginInterceptor);
         reg1.addPathPatterns("/user/modify","/main/adminMenu");
-
+        InterceptorRegistration reg2 = registry.addInterceptor(topMenuInterceptor);
+        reg2.addPathPatterns("/**");
 
 
     }

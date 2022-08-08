@@ -26,7 +26,7 @@
     </div>
 
     <div class="container">
-        <form:form action="/user/signup_pro" id="form" class="form" modelAttribute="loginUserBeans" method="post">
+        <form:form action="/user/signup_pro" id="form" class="form" modelAttribute="tempLoginUserBeansResource" method="post">
 
             <div class="form-control">
                 <form:label path="user_email_front">엔글 이메일</form:label>

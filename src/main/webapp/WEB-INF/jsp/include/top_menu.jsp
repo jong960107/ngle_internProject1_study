@@ -19,6 +19,9 @@
                 <li  id="adminMenu">
                     <a href="${root }main/adminMenu" class="nav-link"> <span>관리메뉴</span> </a>
                 </li>
+                <li class="checkingMachine">
+                    <a href="${root }main/checkingMachine" class="nav-link"> <span class="checkingMachine">기기조회</span> </a>
+                </li>
                 <li>
                     <a href="${root }user/modify" class="nav-link"> <span id="modify">정보수정</span> </a>
                 </li>
@@ -29,7 +32,7 @@
             <c:otherwise>
 
 <%--                checkingMachine--%>
-                <li id="checkingMachine">
+                <li class="checkingMachine">
                     <a href="${root }main/checkingMachine" class="nav-link"> <span class="checkingMachine">기기조회</span> </a>
                 </li>
                 <li class="nav-item">
@@ -39,6 +42,6 @@
         </c:choose>
     </ul>
 </div>
-
+<script src="/resources/js/top_menu.js"></script>
 </body>
 </html>

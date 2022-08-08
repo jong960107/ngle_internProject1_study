@@ -9,7 +9,7 @@ public interface UserMapper {
 
     @Select("select user_email_front, user_pw " +
             "from user_table " +
-            "where user_email_front=#{user_email_front} and user_pw=#{user_pw}")
+            "where user_email_front=#{user_email_front,jdbcType=VARCHAR} and user_pw=#{user_pw,jdbcType=VARCHAR}")
      UserBeans getLoginUserInfo(UserBeans loginUserBeans);
 
 

@@ -20,8 +20,8 @@ public class UserService {
     @Resource(name = "loginUserBeansResource")
     private UserBeans loginUserBeansResource;
 
-    public void getLoginUserInfo(UserBeans loginUserBeans){
-        UserBeans tempLoginUserBeans = userDao.getLoginUserInfo(loginUserBeans);
+    public UserBeans getLoginUserInfo(UserBeans tempLoginUserBeansResource){
+        UserBeans tempLoginUserBeans = userDao.getLoginUserInfo(tempLoginUserBeansResource);
 
         if(tempLoginUserBeans != null) {
             loginUserBeansResource.setUser_idx(tempLoginUserBeans.getUser_idx());
@@ -37,7 +37,7 @@ public class UserService {
 
         }
 
-
+    return loginUserBeansResource;
     }
 
 }

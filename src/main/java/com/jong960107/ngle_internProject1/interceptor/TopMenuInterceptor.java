@@ -12,18 +12,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@Slf4j
+
 @Component
 public class TopMenuInterceptor implements HandlerInterceptor {
-    @Resource(name = "loginUserBeansResource")
+
     private UserBeans loginUserBeansResource;
+    private UserService userService;
 
-
-
+    public TopMenuInterceptor(UserService userService, UserBeans loginUserBeansResource) {
+        this.userService = userService;
+        this.loginUserBeansResource = loginUserBeansResource;
+    }
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        request.setAttribute("loginUserBeansResource",loginUserBeansResource);
+
+        userService.getLoginUserInfo(loginUserBeansResource);
+        UserBeans requestTempLoginUserBeansResource =(UserBeans)request.getAttribute("loginUserBeansResource");
+        request.setAttribute("loginUserBeansResource",requestTempLoginUserBeansResource);
 
         return true;
     }
