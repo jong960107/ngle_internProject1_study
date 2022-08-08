@@ -4,24 +4,16 @@
 <c:set var="root" value="/"/>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Title</title>
-  <link href="/resources/css/reset.css" rel="stylesheet" />
-  <link href="/resources/css/login.css" rel="stylesheet" />
 </head>
 <body>
-<div id="top_menu">
-  <c:import url="/WEB-INF/jsp/include/top_menu.jsp"/>
-</div>
 
-
-
-</div>
-
-
-
+<script>
+    alert('문제가 발생했습니다... 다시 홈페이지로 돌아가주세요..')
+    location.href='/main'
+</script>
 </body>
-
-
 </html>

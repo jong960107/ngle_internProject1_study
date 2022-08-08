@@ -13,14 +13,15 @@ import javax.servlet.http.HttpServletResponse;
 @RequiredArgsConstructor
 public class CheckLoginInterceptor implements HandlerInterceptor {
 
-    @Autowired
-    private final UserService userService;
 
-    @Autowired
+
+
     @Resource(name = "loginUserBeansResource")
     private UserBeans loginUserBeansResource;
 
-
+    public CheckLoginInterceptor(UserBeans loginUserBeansResource){
+        this.loginUserBeansResource = loginUserBeansResource;
+    }
 
 
     @Override

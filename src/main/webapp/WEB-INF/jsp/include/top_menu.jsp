@@ -12,20 +12,28 @@
 </head>
 <body>
 
-<div>
-    <ul class="navbar-nav ml-auto">
+<div id="body2">
+<ul>
         <c:choose>
-            <c:when test="${loginUserBeansResource.userLogin == true}">
-                <li class="nav-item">
+            <c:when test="${userLogin == true}">
+                <li  id="adminMenu">
+                    <a href="${root }main/adminMenu" class="nav-link"> <span>관리메뉴</span> </a>
+                </li>
+                <li>
                     <a href="${root }user/modify" class="nav-link"> <span id="modify">정보수정</span> </a>
                 </li>
-                <li class="nav-item">
+                <li>
                     <a href="${root }user/logout" class="nav-link"><span id="logout">로그아웃</span></a>
                 </li>
             </c:when>
             <c:otherwise>
+
+<%--                checkingMachine--%>
+                <li id="checkingMachine">
+                    <a href="${root }main/checkingMachine" class="nav-link"> <span class="checkingMachine">기기조회</span> </a>
+                </li>
                 <li class="nav-item">
-                    <a href="/main" class="nav-link"><span id="login">로그인</span></a>
+                    <a href="/user/login" class="nav-link"><span id="login">로그인</span></a>
                 </li>
             </c:otherwise>
         </c:choose>

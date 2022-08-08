@@ -7,3 +7,16 @@ a{
     margin-right: 30px;
 }
 
+#adminMenu{
+    float: left;
+    margin-left: 30px;
+}
+
+#checkingMachine{
+    float: left;
+    margin-left: 30px;
+}
+
+#body2{
+    overflow: hidden;
+}

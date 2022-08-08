@@ -11,7 +11,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
 import javax.validation.Valid;
@@ -27,24 +26,37 @@ public class UserController {
     private UserBeans loginUserBeansResource;
 
 
-    @GetMapping("/logout")
-    public String logout() {
+    @GetMapping("/user/logout")
+    public String logout(@ModelAttribute("loginUserBeans") UserBeans loginUserBeans,BindingResult result) {
+
+        if (result.hasErrors()){
+            return "/user/errorAlert";
+        }
 
         loginUserBeansResource.setUserLogin(false);
 
-        return "/main/index";
+        return "/user/login";
+    }
+
+    @GetMapping("/user/login")
+    public String getSignup_pro(@ModelAttribute("loginUserBeans") UserBeans loginUserBeans,BindingResult result){
+
+        if(result.hasErrors()){
+            return "/user/errorAlert";
+        }
+
+        return "/user/login";
     }
 
 
     @PostMapping("/user/signup_pro")
-    public String signup_pro(@Valid @ModelAttribute("loginUserBeans") UserBeans loginUserBeans, BindingResult result, Model model, Request request){
+    public String postSignup_pro(@Valid @ModelAttribute("loginUserBeans") UserBeans loginUserBeans, BindingResult result, Model model, Request request){
 
         if (result.hasErrors()){
-            return "/main/index";
+            return "/user/login";
         }
 
         userService.getLoginUserInfo(loginUserBeans);
-
 
         if(loginUserBeansResource.isUserLogin() == true){
 
